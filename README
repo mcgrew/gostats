@@ -1,0 +1,237 @@
+PACKAGE DOCUMENTATION
+
+package statistics
+    import "github.com/mcgrew/gostats"
+
+
+
+FUNCTIONS
+
+func FirstQuartile(values []float64) float64
+    Returns the data value that is the 25th percentile of a set of data.
+
+    @param values The set of values to find the first quartile of. @return
+    The first quartile data point.
+
+func KendallCorrelation(x, y []float64) float64
+    Returns the Kendall tau rank correlation coefficient of the 2 sets of
+    data. Each array should be the same length and contain at least 3
+    values.
+
+    <PRE>
+
+	x = values in the first set
+	y = values in the second set
+	n = number of values in each set
+	Rx = the rank of the values in the first set
+	Ry = the rank of the values in the second set
+	Tx = the number of ties in x.
+	Ty = the number of ties in y.
+	concordant = The number of concordant pairs
+	discordant = The number of discordant pairs
+	                             concordant - discordant
+
+    correlationValue = ---------------------------------------------
+
+	         n*(n-1)            n*(n-1)
+	sqrt( ( ------- - Tx ) * (  ------- - Ty ) )
+	           2                   2
+
+    References: <CITE>Wikipedia, the free encyclopedia (2010, March 25).
+
+	<I>Kendall tau rank correlation coefficient</I>.
+	Retrieved April 14, 2010, from http://en.wikipedia.org/wiki/Kendall_tau_rank_correlation_coefficient</CITE>
+
+    </PRE>
+
+    Parameters:
+
+	x: The first set of values to use for the calculation.
+	y: The second set of values to use for the calculation.
+
+    Return value:
+
+	float64: The Kendall Tau correlation value.
+
+func Max(values []float64) float64
+    Returns the maximum of a set of values. NaN values are omitted.
+
+    @param values the set of values to find the maximum for. @return The
+    maximum value in the array.
+
+func MaxRegular(values []float64) float64
+    Returns the maximum regular value in a data set. This is the largest
+    value that would not be considered an outlier.
+
+    @param values The set of values to find the maximum regular value for.
+    @return The minimum regular value.
+
+func Mean(values []float64) float64
+    Finds the mean of a set of values. NaN values are omitted.
+
+    @param values The set of values. @return The mean of those values.
+
+func Median(values []float64) float64
+    Finds the median of a set of values. NaN values are omitted.
+
+    @param values The set to find the median of. @return The median of those
+    values.
+
+func Min(values []float64) float64
+    Returns the minimum of a set of values. NaN values are omitted.
+
+    @param values The set of values to find the minimum for. @return The
+    minimum value in the array.
+
+func MinRegular(values []float64) float64
+    Returns the minimum regular value in a data set. This is the smallest
+    value that would not be considered an outlier.
+
+    @param values The set of values to find the minimum regular value for.
+    @return The minimum regular value.
+
+func PearsonCorrelation(x, y []float64) float64
+    Returns the Pearson correlation coefficient of the 2 sets of values.
+    Each array should be the same length and contain at least 3 values.
+
+    <PRE>
+
+	x = sample values in the first set
+	y = sample values in the second set
+	n = number of values in each set
+	Sx = standard deviation of x
+	Sy = standard deviation of y
+	                                           _              _
+	                 sum( i=0 to n-1, ( x[i] - x ) * ( y[i] - y ))
+
+    correlationValue = -----------------------------------------------
+
+	( n - 1 ) Sx * Sy
+
+    References: <CITE>Wikipedia, the free encyclopedia (2010, April 13).
+
+	<I>Correlation and Dependence</I>.
+	Retrieved April 14, 2010, from http://en.wikipedia.org/wiki/Correlation#Pearson.27s_product-moment_coefficient</CITE>
+
+    </PRE>
+
+    Parameters:
+
+	x: The first set of values to use for the calculation.
+	y: The second set of values to use for the calculation.
+
+    Return value:
+
+	float64: The Pearson correlation value.
+
+func Percentile(values []float64, percentile float64) float64
+
+func QuartileRange(values []float64) (float64, float64)
+    Finds the range of the first and third quartiles of a data set, or the
+    25th to 75th percentile of a set of data.
+
+    @param values The set of data to find the quartile range for. @return A
+    range containing the 25th to 75th percentiles.
+
+func RegularRange(values []float64) (float64, float64)
+    Finds the range inside which all regular values fall (inclusive).
+
+    @param values The set of data to find the regular range for. @return A
+    range outside which all other values in the data set would be
+
+	considered outliers.
+
+func SpearmanCorrelation(x, y []float64) float64
+    Returns the Spearman rank correlation coefficient of the 2 sets of data.
+    Each array should be the same length and contain at least 3 values.
+
+    <PRE>
+
+	x = values in the first set
+	y = values in the second set
+	n = number of values in each set
+	Rx = rank array of x, ie. the new locations of each element of x if x were sorted
+	Ry = rank array of y, ie. the new locations of each element of y if y were sorted
+	                     6 * sum( i=0 to n-1, ( Rx[i] - Ry[i] )^2 )
+
+    correlationValue = 1 - --------------------------------------------
+
+	n * ( n^2 - 1 )
+
+    References: <CITE>Wikipedia, the free encyclopedia (2010, April 1).
+
+	<I>Spearman's rank correlation coefficient</I>.
+	Retrieved April 14, 2010, from http://en.wikipedia.org/wiki/Spearman's_rank_correlation_coefficient</CITE>
+
+    <CITE>Spiegel, Murray R. (1961). Statistics, 2nd Edition (pp
+    376,391-393). New York.</CITE> </PRE>
+
+    @param x The first set of data to use for the calculation. @param y The
+    second set of data to use for the calculation. @return The Spearman
+    correlation value. Parameters:
+
+	x: The first set of values to use for the calculation.
+	y: The second set of values to use for the calculation.
+
+    Return value:
+
+	float64: The Pearson correlation value.
+
+func StandardDeviation(values []float64) float64
+    Returns the standard deviation of a set of values.
+
+    @param values The set to find the standard deviation of. @return The
+    standard deviation as a double.
+
+func Sum(values []float64) float64
+    Finds the sum of a set of values. NaN values are omitted.
+
+    @param values The set of values. @return The sum of those values.
+
+func TandemSort(arr, companion []float64)
+    TandemSort sorts 2 arrays. It makes one call to data.Len to determine n,
+    and O(n*log(n)) calls to data.Less and data.Swap. The sort is not
+    guaranteed to be stable.
+
+func ThirdQuartile(values []float64) float64
+    Returns the data value that is the 75th percentile of a set of data.
+
+    @param values The set of values to find the third quartile of. @return
+    The third quartile data point.
+
+func TripletSort(arr, companion, companion2 []float64)
+    TripletSort sorts 2 arrays. It makes one call to data.Len to determine
+    n, and O(n*log(n)) calls to data.Less and data.Swap. The sort is not
+    guaranteed to be stable.
+
+
+TYPES
+
+type Doublet struct {
+    Data      []float64
+    Companion []float64
+}
+
+
+func (p Doublet) Len() int
+
+func (p Doublet) Less(i, j int) bool
+
+func (p Doublet) Swap(i, j int)
+
+
+type Triplet struct {
+    Data       []float64
+    Companion  []float64
+    Companion2 []float64
+}
+
+
+func (p Triplet) Len() int
+
+func (p Triplet) Less(i, j int) bool
+
+func (p Triplet) Swap(i, j int)
+
+
+
