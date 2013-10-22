@@ -61,6 +61,26 @@ func Mean(values []float64) float64 {
 	return sum / float64(count)
 }
 
+// Finds the weighted mean of a set of values. NaN values are omitted.
+//
+// @param values The set of values.
+// @param weights The weight for each value
+// @return The mean of those values.
+func WeightedMean(values, weights []float64) float64 {
+	if len(values) != len(weights) {
+		return math.NaN()
+	}
+	var sum float64 = 0.0
+	var count float64 = 0.0
+	for i := range values {
+		if !math.IsNaN(values[i]) && !math.IsNaN(weights[i]) {
+			sum += values[i] * weights[i]
+			count += weights[i]
+		}
+	}
+	return sum / count
+}
+
 // Finds the sum of a set of values. NaN values are omitted.
 //
 // @param values The set of values.

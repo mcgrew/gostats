@@ -204,6 +204,12 @@ func TripletSort(arr, companion, companion2 []float64)
     n, and O(n*log(n)) calls to data.Less and data.Swap. The sort is not
     guaranteed to be stable.
 
+func WeightedMean(values, weights []float64) float64
+    Finds the weighted mean of a set of values. NaN values are omitted.
+
+    @param values The set of values. @param weights The weight for each
+    value @return The mean of those values.
+
 
 TYPES
 
@@ -218,6 +224,14 @@ func (p Doublet) Len() int
 func (p Doublet) Less(i, j int) bool
 
 func (p Doublet) Swap(i, j int)
+
+
+type Range struct {
+    Min float64
+    Max float64
+}
+    A type for handling a number range.
+
 
 
 type Triplet struct {

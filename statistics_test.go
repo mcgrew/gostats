@@ -96,6 +96,15 @@ func TestMean(t *testing.T) {
 	}
 }
 
+func TestWeightedMean(t *testing.T) {
+	slice1 := []float64{54.0, 93.0, 87.0, 3.5, 10.0, 12.0}
+	weights := []float64{1.0, 1.0, 1.0, 2.0, 1.0, 2.0}
+	result := WeightedMean(slice1, weights)
+	expect := 34.375
+	if result != expect {
+		t.Errorf("Mean failed. Expected %f, got %f", expect, result)
+	}
+}
 func TestSum(t *testing.T) {
 	slice1 := []float64{54.0, 93.0, 87.0, 3.5, 10.0, 12.0}
 	result := Sum(slice1)
